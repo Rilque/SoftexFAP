@@ -1,34 +1,43 @@
-import { Carro } from "./carro";
-import { Moto } from "./moto";
-import { Veiculo } from "./veiculo";
+import { Carro } from "./model/Carro";
+import { Moto } from "./model/Moto";
+import { Veiculo } from "./model/Veiculo";
 
+  class Aplicacao {
+    criarVeiculos(): Veiculo[] {
+      const veiculos: Veiculo[] = [];
+      const carro1 = new Carro("Sedan", "Toyota", "Azul", 4, 4);
+      const carro2 = new Carro("SUV", "Ford", "Vermelho", 4, 5);
+      const moto1 = new Moto("Sport", "Honda", "Preto", 2, 1000);
+      const moto2 = new Moto("Cruiser", "Harley-Davidson", "Prata", 2, 1500);
+  
+      veiculos.push(carro1, carro2, moto1, moto2);
+  
+      return veiculos;
+    }
+  
+    clonarVeiculos(veiculos: Veiculo[]): Veiculo[] {
+      const veiculosClonados: Veiculo[] = [];
+      for (const veiculo of veiculos) {
+        veiculosClonados.push(veiculo.clone());
+      }
+      return veiculosClonados;
+    }
+  
+    imprimirVeiculos(veiculos: Veiculo[]): void {
+      for (const veiculo of veiculos) {
+        console.log(veiculo.represent());
+      }
+    }
+  }
+  
 
-let listaVeiculos = new Array<Veiculo>();
-
-let carroModelo = new Carro("Toro", "Fiat", 4, "Preto", 5, 170);
-listaVeiculos.push(carroModelo);
-
-let motoModelo = new Moto("Meteor FireBall", "Royal Enfield", 2, "Amarela", 350);
-listaVeiculos.push(motoModelo);
-// Criando os clones:
-let cloneCarro1 = carroModelo.clone("Etios", "Toyota", 4, "Prata", 5, 95);
-listaVeiculos.push(cloneCarro1);
-
-let cloneCarro2 = carroModelo.clone("Picanto", "Kia", 4, "Preto", 5, 90);
-listaVeiculos.push(cloneCarro2);
-
-let cloneMoto1 = motoModelo.clone("Factor", "Yamaha", 2, "Preta", 150);
-listaVeiculos.push(cloneMoto1);
-
-let cloneMoto2 = motoModelo.clone("EV1", "Voltz", 2, "Vermelha", 80);
-listaVeiculos.push(cloneMoto2);
-
-// Não foi criado um array de clones, pois já utilizamos clone para criar a listaVeiculos
-
-//console.log(listaVeiculos);
-
-console.table(listaVeiculos);
-
-listaVeiculos.forEach(element => {
-    console.log(element.toString());
-});
+  const app = new Aplicacao();
+  const veiculos = app.criarVeiculos();
+  const veiculosClonados = app.clonarVeiculos(veiculos);
+  
+  console.log("Veículos originais:");
+  app.imprimirVeiculos(veiculos);
+  
+  console.log("\nVeículos clonados:");
+  app.imprimirVeiculos(veiculosClonados);
+  

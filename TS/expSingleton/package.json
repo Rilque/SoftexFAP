@@ -1,5 +1,5 @@
 {
-  "name": "expprototype",
+  "name": "expsingleton",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2"
   }
 }
